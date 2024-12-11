@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { alumniLogin } from "../redux/actions/alumni";
 import toast from "react-hot-toast";
+import FrontPageBackgroundImage from "../assets/FrontPageBackgroundImage.jpg";
+import gbuLogo from "../assets/gbuLogo.webp";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false); // Loading state
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { message, error, isAlumniAuthenticated } = useSelector(
+    const { message, error, isAlumniAuthenticated, loading } = useSelector(
         (state) => state.alumni
     );
 
@@ -21,9 +22,7 @@ const Login = () => {
             toast.error("Please fill all the fields");
             return;
         }
-        setLoading(true); // Start loading
         await dispatch(alumniLogin(email, password));
-        setLoading(false); // Stop loading after action completes
     };
 
     useEffect(() => {
@@ -38,13 +37,52 @@ const Login = () => {
             toast.success(message);
             dispatch({ type: "clearMessage" });
         }
-        setLoading(false); // Ensure loading stops if login completes or fails
     }, [dispatch, message, error, isAlumniAuthenticated, navigate]);
 
     return (
         <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
-            <div className="flex w-full items-center justify-center bg-white p-8">
-                <div className="w-full max-w-md">
+            {/* Left Div with Background Image */}
+            <div
+                className="hidden lg:flex w-full lg:w-3/5 h-screen items-center justify-center"
+                style={{
+                    backgroundImage: `url(${FrontPageBackgroundImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                }}
+            >
+                <div
+                    className="flex flex-col items-center justify-start h-full w-full pt-12 "
+                >
+                    <div
+                        className="text-5xl font-bold text-white px-4 text-center"
+                        style={{
+                            textShadow:
+                                "2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black",
+                        }}
+                    >Alumni Connect</div>
+                    <p
+                        className="text-3xl font-bold text-white px-4 text-center mt-2"
+                        style={{
+                            textShadow:
+                                "2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black",
+                        }}
+                    >
+                        One-stop platform to connect with alumni
+                    </p>
+                </div>
+
+            </div>
+
+            {/* Right Div with Login Form */}
+            <div className="flex flex-col  w-full lg:w-2/5 items-center justify-center bg-white p-8">
+                <div
+                    className="mb-8"
+                >
+                    <img
+                        className="w-45 h-45 mx-auto"
+                        src={gbuLogo} alt="" />
+                </div>
+                <div className="w-full max-w-md mt-4">
                     <h1 className="text-3xl font-bold mb-6">Login</h1>
                     <form onSubmit={handleLogin} className="space-y-6">
                         <div>

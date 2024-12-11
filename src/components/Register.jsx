@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../redux/actions/user';
 import { alumniRegister } from '../redux/actions/alumni';
+import gbuHeadingLogo from "../assets/gbuHeadinLogo2.png"
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { message, alumniError, isAlumniAuthenticated } = useSelector((state) => state.alumni);
+    const { message, alumniError, isAlumniAuthenticated, loading } = useSelector((state) => state.alumni);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -118,7 +118,12 @@ const Register = () => {
     }, [dispatch, message, alumniError, isAlumniAuthenticated, navigate]);
 
     return (
-        <div className="flex flex-row min-h-screen">
+        <div className="flex flex-col min-h-screen">
+            <div
+                className='flex justify-center items-center w-full'
+            >
+                <img src={gbuHeadingLogo} alt="" />
+            </div>
             <div className="flex justify-center items-center w-full px-4">
                 <div className="bg-white rounded-lg w-full p-6">
                     <h1 className="text-2xl font-semibold mb-4">Create an account!</h1>
@@ -126,13 +131,15 @@ const Register = () => {
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div className="flex flex-col">
                                 <label htmlFor="firstName">First Name</label>
+                                {/* use focus outline color #013421  */}
                                 <input
                                     type="text"
                                     name="firstName"
                                     value={formData.firstName}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
+
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="lastName">Last Name</label>
@@ -141,7 +148,7 @@ const Register = () => {
                                     name="lastName"
                                     value={formData.lastName}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -151,7 +158,7 @@ const Register = () => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -160,7 +167,7 @@ const Register = () => {
                                     name="graduationYear"
                                     value={formData.graduationYear}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 >
                                     <option value="">Select</option>
                                     {[...Array(21)].map((_, i) => (
@@ -176,7 +183,7 @@ const Register = () => {
                                     name="fieldOfStudy"
                                     value={formData.fieldOfStudy}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 >
                                     <option value="">Select</option>
                                     {['Integrated Btech-Mtech', 'Btech', 'Mtech', 'BCA', 'MCA', 'Bsc', 'Msc', 'Biotech', 'BBA', 'MBA', 'BA', 'MA', 'PhD'].map(
@@ -195,7 +202,7 @@ const Register = () => {
                                     name="profession"
                                     value={formData.profession}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -204,7 +211,7 @@ const Register = () => {
                                     name="industry"
                                     value={formData.industry}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 >
                                     <option value="">Select</option>
                                     {[
@@ -242,7 +249,7 @@ const Register = () => {
                                     name="jobLocation"
                                     value={formData.jobLocation}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -252,7 +259,7 @@ const Register = () => {
                                     name="dateOfBirth"
                                     value={formData.dateOfBirth}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -262,7 +269,7 @@ const Register = () => {
                                     name="password"
                                     value={formData.password}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -272,7 +279,7 @@ const Register = () => {
                                     name="confirmPassword"
                                     value={formData.confirmPassword}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -282,7 +289,7 @@ const Register = () => {
                                     name="linkedin"
                                     value={formData.linkedin}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -292,7 +299,7 @@ const Register = () => {
                                     name="github"
                                     value={formData.github}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -302,7 +309,7 @@ const Register = () => {
                                     name="twitter"
                                     value={formData.twitter}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -312,7 +319,7 @@ const Register = () => {
                                     name="instagram"
                                     value={formData.instagram}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -322,7 +329,7 @@ const Register = () => {
                                     name="portfolio"
                                     value={formData.portfolio}
                                     onChange={handleChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -332,7 +339,7 @@ const Register = () => {
                                     name="file"
                                     accept="image/*"
                                     onChange={handleFileChange}
-                                    className="p-3 border rounded-md"
+                                    className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] border-[#013421]"
                                 />
                                 {preview && (
                                     <div className="mt-2">
@@ -346,8 +353,38 @@ const Register = () => {
                                 )}
                             </div>
                         </div>
-                        <button type="submit" className="w-full mt-6 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                            Register
+                        <button
+                            type="submit"
+                            disabled={loading} // Disable button when loading
+                            className={`w-full flex items-center justify-center mt-4 ${loading
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-[#013421] hover:bg-green-800"
+                                } text-white p-3 rounded-md transition duration-300`}
+                        >
+                            {loading ? (
+                                <svg
+                                    className="animate-spin h-5 w-5 text-white"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <circle
+                                        className="opacity-25"
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        strokeWidth="4"
+                                    ></circle>
+                                    <path
+                                        className="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 2.42.879 4.63 2.341 6.341l1.659-1.05z"
+                                    ></path>
+                                </svg>
+                            ) : (
+                                "Register"
+                            )}
                         </button>
                     </form>
                     <p className="mt-4">
