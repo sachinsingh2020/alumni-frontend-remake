@@ -59,7 +59,7 @@ const RegisteredCard = () => {
                         </div>
 
                         {/* Contact Info */}
-                        <div className="text-sm text-gray-700 space-y-2 font-semibold">
+                        <div className="text-sm text-center text-gray-700 space-y-2 font-semibold">
                             <div>
                                 <span className="font-bold">Date of Registration:</span> {alumniUser.createdAt ? new Date(alumniUser.createdAt).toLocaleDateString('en-US') : '01 Jan 2015'}
                             </div>
