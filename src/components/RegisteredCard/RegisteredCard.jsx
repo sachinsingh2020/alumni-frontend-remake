@@ -43,7 +43,7 @@ const RegisteredCard = () => {
                     <div className="p-4 space-y-4">
                         {/* Profile Section */}
                         <div className="flex flex-col items-center">
-                            <div className="w-32 h-42 bg-gray-300 flex items-center justify-center">
+                            <div className="w-32 h-40 bg-gray-300 flex items-center justify-center">
                                 <img
                                     className="rounded-md w-full h-full object-cover"
                                     src={alumniUser.profilePic.url}
