@@ -124,6 +124,9 @@ const Register = () => {
             >
                 <img src={gbuHeadingLogo} alt="" />
             </div>
+            <div>
+                <h1 className="text-4xl font-bold text-center mt-4">Alumni Registration</h1>
+            </div>
             <div className="flex justify-center items-center w-full px-4">
                 <div className="bg-white rounded-lg w-full p-6">
                     <h1 className="text-2xl font-semibold mb-4">Create an account!</h1>

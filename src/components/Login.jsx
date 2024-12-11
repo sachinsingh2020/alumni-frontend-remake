@@ -41,7 +41,6 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
-            {/* Left Div with Background Image */}
             <div
                 className="hidden lg:flex w-full lg:w-3/5 h-screen items-center justify-center"
                 style={{
@@ -75,13 +74,18 @@ const Login = () => {
 
             {/* Right Div with Login Form */}
             <div className="flex flex-col  w-full lg:w-2/5 items-center justify-center bg-white p-8">
-                <div
-                    className="mb-8"
-                >
-                    <img
-                        className="w-45 h-45 mx-auto"
-                        src={gbuLogo} alt="" />
+                {/* this div should only when screen size if mobile  */}
+                <div className="lg:hidden">
+                    <h1 className="text-2xl font-bold mb-6 text-center">Alumni Connect Platform</h1>
                 </div>
+                <div className="mb-8">
+                    <img
+                        className="w-[138px] h-[138px] md:w-48 md:h-48 mx-auto"
+                        src={gbuLogo}
+                        alt=""
+                    />
+                </div>
+
                 <div className="w-full max-w-md mt-4">
                     <h1 className="text-3xl font-bold mb-6">Login</h1>
                     <form onSubmit={handleLogin} className="space-y-6">
@@ -98,7 +102,7 @@ const Login = () => {
                                 placeholder="Enter your email..."
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-3 border border-[#013421] rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421] "
                                 required
                             />
                         </div>
@@ -115,7 +119,7 @@ const Login = () => {
                                 placeholder="Enter your password..."
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-3 border border-[#013421] rounded-md focus:outline-none focus:ring-2 focus:ring-[#013421]"
                                 required
                             />
                         </div>
